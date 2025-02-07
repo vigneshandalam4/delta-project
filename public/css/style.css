@@ -139,6 +139,10 @@ body{
     padding-right: 0;
 }
 
+.btnsze{
+    width: 4.8rem;
+}
+
 /* Map styling on show page */
 /* Map Container */
 .mapstyle {
