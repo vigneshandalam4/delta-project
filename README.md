@@ -1,5 +1,7 @@
 # Wanderlust
 
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+
 Wanderlust is a full-stack web application designed to help users explore, share, and review travel destinations. It allows travelers to browse locations, post listings, and leave reviews. Built using the **MEN stack (MongoDB, Express.js, Node.js)**, Wanderlust provides a seamless user experience for adventurers looking to discover new places.
 
 ## Features
@@ -55,3 +57,4 @@ This project is licensed under the **MIT License**.
 
 ## Contact
 For any inquiries, feel free to reach out via GitHub or email.
+
