@@ -51,4 +51,9 @@ router.get('/profile', isLoggedIn, (req, res) => {
     res.render('miscellaneous/profile.ejs', { user });
 });
 
+//policies
+router.get("/policies",(req,res) => {
+    res.render("miscellaneous/policies.ejs");
+});
+
 module.exports = router;
