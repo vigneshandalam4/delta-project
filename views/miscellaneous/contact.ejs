@@ -1,0 +1,65 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="container">
+    <h1>Contact Us</h1>
+    <p>Have questions or need assistance? Reach out to us!</p>
+
+    <div class="contact-info">
+        <p><strong>Email:</strong> <a href="mailto:vigneshandalam4@gmail.com">vigneshandalam4@gmail.com</a></p>
+        <p><strong>Phone:</strong> <a href="tel:+919502758202">+91 9502758202</a></p>
+    </div>
+
+    <form action="/contact" method="POST">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="message">Your Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+        text-align: center;
+    }
+    .contact-info {
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+    input, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        margin-top: 15px;
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    button:hover {
+        background: #218838;
+    }
+</style>
