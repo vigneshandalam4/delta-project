@@ -41,6 +41,8 @@ const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 //User route
 const userRouter = require("./routes/user.js");
+//Booking route
+const bookingRouter = require("./routes/booking.js");
 
 // Set EJS as the view engine for rendering templates
 app.set('view engine', 'ejs');
@@ -56,7 +58,7 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 //connection to database
-// const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
+const MONGO_URL = 'mongodb://127.0.0.1:27017/wanderlust';
 const dbUrl = process.env.ATLASDB_URL;
 
 main().then(() => {
@@ -66,8 +68,8 @@ main().then(() => {
 });
 
 async function main(){
-    // await mongoose.connect(MONGO_URL);
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(MONGO_URL);
+    // await mongoose.connect(dbUrl);
 
    // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
@@ -157,6 +159,8 @@ app.use("/listings",listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
 //User, seperate route
 app.use("/",userRouter);
+//Bookings, seperate route
+app.use("/",bookingRouter);
 
 //error handling
 //if client goes on any route which is not there in our domain ,404 page not found

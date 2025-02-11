@@ -51,6 +51,13 @@ const listingSchema = new Schema({
         ], 
         required: true 
     },
+    bookedDates: [String], // stores the booked dates in "YYYY-MM-DD"
+    bookings: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Booking",
+        },
+    ],
 });
 
 listingSchema.post("findOneAndDelete",async (listing) => {

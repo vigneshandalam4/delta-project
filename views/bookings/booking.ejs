@@ -1,0 +1,73 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<!-- Include Flatpickr CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<!-- Include Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+<!-- Include Flatpickr JS -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<br/>
+<div class="row mt-5">
+  <div class="col-8 offset-3 mt-5">
+        <h3>Book Your Stay</h3>
+        <form id="bookingForm" action="/listings/<%= listing._id %>/book" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
+            <!-- Check-in and Check-out Date Fields -->
+            <div class="mb-3 mt-3">
+                <label for="checkIn" class="form-label">Check-In:&ensp;&ensp;&ensp;&ensp;</label>
+                <input type="text" name="booking[checkIn]" id="checkIn" required class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="checkOut" class="form-label">Check-Out:&ensp;&ensp;</label>
+                <input type="text" name="booking[checkOut]" id="checkOut" required class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Book Now</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    //blocks booked dates and past dates
+    // Get today's date to block past dates
+    const today = moment().format('YYYY-MM-DD');
+
+    // Example list of booked (blocked) dates
+    const bookedDates = ["2025-02-15", "2025-02-16", "2025-02-17"];
+
+    // Convert booked dates to the format Flatpickr expects
+    const blockedDates = bookedDates.map(date => moment(date).format('YYYY-MM-DD'));
+
+    // Initialize Flatpickr for check-in field
+    flatpickr("#checkIn", {
+        minDate: today,   // Block past dates
+        disable: blockedDates, // Block the specified dates
+        dateFormat: "Y-m-d",  // Format for the date
+    });
+
+    // Initialize Flatpickr for check-out field
+    flatpickr("#checkOut", {
+        minDate: today,   // Block past dates
+        disable: blockedDates, // Block the specified dates
+        dateFormat: "Y-m-d",  // Format for the date
+    });
+
+    // Add a submit event listener to the form for additional validation
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        const checkIn = document.getElementById('checkIn').value;
+        const checkOut = document.getElementById('checkOut').value;
+
+        // Check if both fields are empty
+        if (!checkIn || !checkOut) {
+            event.preventDefault();  // Prevent form submission
+            alert('Both check-in and check-out dates must be selected.');
+            return;
+        }
+
+        // Check if the check-in date is before the check-out date
+        if (moment(checkIn).isSameOrAfter(moment(checkOut))) {
+            event.preventDefault();  // Prevent form submission
+            alert('Check-in date must be before check-out date.');
+        }
+    });
+</script>

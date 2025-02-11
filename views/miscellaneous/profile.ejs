@@ -34,3 +34,11 @@
     </div>
   </div>
 </div>
+
+<h2>My Bookings</h2>
+<% for(let booking of user.bookings) { %>
+    <p>Listing: <%= booking.listing.title %></p>
+    <p>Check-In: <%= booking.checkIn %></p>
+    <p>Check-Out: <%= booking.checkOut %></p>
+    <p>Payment Status: <%= booking.paymentStatus %></p>
+<% } %>
