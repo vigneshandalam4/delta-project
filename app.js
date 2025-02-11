@@ -50,6 +50,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 // Parse incoming request bodies with URL-encoded payloads (e.g., form data)
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // Override HTTP methods with a query parameter (_method) for supporting PUT/DELETE in forms
 app.use(methodOverride("_method"));
 // Use EJS Mate as the template engine for better layout management

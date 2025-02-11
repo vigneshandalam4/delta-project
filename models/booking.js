@@ -13,11 +13,11 @@ const bookingSchema = new Schema({
         required: true
     },
     checkIn: {
-        type: Date,
+        type: String,
         required: true
     },
     checkOut: {
-        type: Date,
+        type: String,
         required: true
     },
     amount: {

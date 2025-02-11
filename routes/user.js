@@ -4,6 +4,7 @@ const User = require("../models/user.js");
 const wrapAsync = require("../utils/wrapAsync");
 const passport = require("passport");
 const { saveRedirectUrl, isLoggedIn } = require("../middleware.js");
+const Booking = require("../models/booking.js");
 
 //user controller
 const userController = require("../controllers/user.js");
@@ -46,10 +47,23 @@ router.get("/terms",(req,res) => {
 });
 
 // Profile Route
-router.get('/profile', isLoggedIn, (req, res) => {
-    const user = req.user; // Assuming `req.user` contains the logged-in user's data
+router.get('/profile', isLoggedIn, wrapAsync(async(req, res) => {
+    // Find the user by ID and populate the 'bookings' field and 'listing' in each booking
+    const user = await User.findById(req.user._id)
+        .populate({
+            path: 'bookings',
+            populate: {
+                path: 'listing',  // This assumes 'listing' is a reference field in your Booking model
+                model: 'Listing'  // Make sure to replace 'Listing' with the actual model name for listings if different
+            }
+        });
+
+    console.log(user.bookings); // Log bookings to check the populated data
+
+    // Render the profile page with the user and bookings data
     res.render('miscellaneous/profile.ejs', { user });
-});
+}));
+
 
 router.get("/refunds",(req,res) => {
     res.render("miscellaneous/refund.ejs");

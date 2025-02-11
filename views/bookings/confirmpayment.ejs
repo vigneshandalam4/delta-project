@@ -1,1 +1,97 @@
 <% layout("/layouts/boilerplate.ejs") %>
+
+<h1>Confirm Details and Pay</h1>
+<h1><%= orderData.amount %></h1>
+<h1><%= orderData.currency %> in paise</h1>
+
+<button id="rzp-button1">Pay</button>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "<%= key_id  %>", // Enter the Key ID generated from the Dashboard
+    "amount": "<%= orderData.amount %>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "WanderLust Private Limited", // Your business name
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "<%= orderData.orderId %>", // Order ID
+    "handler": function (response) {
+        // Create a new form to submit the data
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/listings/<%= listing._id %>/book/confirm';
+
+        // Add hidden inputs to the form
+        var inputOrderId = document.createElement('input');
+        inputOrderId.type = 'hidden';
+        inputOrderId.name = 'order_id';
+        inputOrderId.value = "<%= orderData.orderId %>";
+
+        var inputPaymentId = document.createElement('input');
+        inputPaymentId.type = 'hidden';
+        inputPaymentId.name = 'payment_id';
+        inputPaymentId.value = response.razorpay_payment_id;
+
+        var inputSignature = document.createElement('input');
+        inputSignature.type = 'hidden';
+        inputSignature.name = 'signature';
+        inputSignature.value = response.razorpay_signature;
+
+        var inputAmount = document.createElement('input');
+        inputAmount.type = 'hidden';
+        inputAmount.name = 'amount';
+        inputAmount.value = "<%= orderData.amount %>";
+
+        var inputCheckIn = document.createElement('input');
+        inputCheckIn.type = 'hidden';
+        inputCheckIn.name = 'checkIn';
+        inputCheckIn.value = "<%= booking.checkIn %>";
+
+        var inputCheckOut = document.createElement('input');
+        inputCheckOut.type = 'hidden';
+        inputCheckOut.name = 'checkOut';
+        inputCheckOut.value = "<%= booking.checkOut %>";
+
+        // Append all inputs to the form
+        form.appendChild(inputOrderId);
+        form.appendChild(inputPaymentId);
+        form.appendChild(inputSignature);
+        form.appendChild(inputAmount);
+        form.appendChild(inputCheckIn);
+        form.appendChild(inputCheckOut);
+
+        // Append the form to the body (it will not be visible)
+        document.body.appendChild(form);
+
+        // Submit the form
+        form.submit();
+    },
+    "prefill": {
+        "name": "<%= user.username %>", // Customer's name
+        "email": "<%= user.email %>", 
+        "contact": "9000090000"  // Customer's phone number
+    },
+    "notes": {
+        "address": "WanderLust Private Limited"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+
+var rzp1 = new Razorpay(options);
+rzp1.on('payment.failed', function (response) {
+    alert(response.error.code);
+    alert(response.error.description);
+    alert(response.error.source);
+    alert(response.error.step);
+    alert(response.error.reason);
+    alert(response.error.metadata.order_id);
+    alert(response.error.metadata.payment_id);
+});
+
+document.getElementById('rzp-button1').onclick = function(e) {
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
