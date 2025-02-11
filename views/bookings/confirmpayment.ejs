@@ -1,10 +1,28 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
-<h1>Confirm Details and Pay</h1>
-<h1><%= orderData.amount %></h1>
-<h1><%= orderData.currency %> in paise</h1>
+<!-- Page Container -->
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Confirm Details and Pay</h1>
 
-<button id="rzp-button1">Pay</button>
+  <!-- Payment Details Card -->
+  <div class="card shadow-lg">
+    <div class="card-body">
+      <h3 class="card-title text-center mb-3 mt-4">Order Summary</h3>
+      
+      <div class="mb-3">
+        <h5><strong>Amount:</strong> ₹<%= orderData.amount / 100 %></h5>
+        <h5><strong>Currency:</strong> <%= orderData.currency %></h5>
+      </div>
+      
+      <!-- Payment Button -->
+      <div class="text-center mb-5">
+        <button id="rzp-button1" class="btn btn-primary btn-lg">Pay Now</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Razorpay Checkout Script -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
 var options = {
@@ -69,7 +87,7 @@ var options = {
     "prefill": {
         "name": "<%= user.username %>", // Customer's name
         "email": "<%= user.email %>", 
-        "contact": "9000090000"  // Customer's phone number
+        "contact": "<%= user.phone %>"  // Customer's phone number
     },
     "notes": {
         "address": "WanderLust Private Limited"
@@ -95,3 +113,51 @@ document.getElementById('rzp-button1').onclick = function(e) {
     e.preventDefault();
 }
 </script>
+
+<!-- Additional Styling -->
+<style>
+  .container {
+    max-width: 600px;
+    margin-top: 50px;
+  }
+
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+
+  h1, h5 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    font-size: 32px;
+  }
+
+  h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+</style>
