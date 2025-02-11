@@ -34,7 +34,7 @@
     const today = moment().format('YYYY-MM-DD');
 
     // Example list of booked (blocked) dates
-    const bookedDates = ["2025-02-15", "2025-02-16", "2025-02-17"];
+    const bookedDates = <%- JSON.stringify(bookedDates) %>; //ignore error
     const blockedDates = bookedDates.map(date => moment(date).format('YYYY-MM-DD'));
 
     // Initialize Flatpickr for check-in field
