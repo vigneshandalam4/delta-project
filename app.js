@@ -69,8 +69,8 @@ main().then(() => {
 });
 
 async function main(){
-    await mongoose.connect(MONGO_URL);
-    // await mongoose.connect(dbUrl);
+    // await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 
    // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
