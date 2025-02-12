@@ -29,7 +29,8 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 
 ![Login](public/images/login.png)
 ![Signup](public/images/signup.png)
-![Profile](public/images/profile1.png)
+![Profile 1](public/images/profile1.png)
+![Profile 2](public/images/profile2.png)
 
 ### 🚀 Future Enhancements
 - ❌ **Booking Cancellation**: Users will be able to **cancel** their bookings.
@@ -49,8 +50,16 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 | **Mapping Service** | Mapbox API |
 | **Payment Gateway** | Razorpay |
 
-![Listing View](public/images/viewlisting1.png)
-![Listing Review](public/images/viewlisting2-reviews.png)
+![Listing View 1](public/images/viewlisting1.png)
+![Listing View 2 - Reviews](public/images/viewlisting2-reviews.png)
+![Listing View 3 - Map](public/images/viewlisting3-map.png)
+
+![Create New Listing](public/images/createnewlisting.png)
+![Edit Listing](public/images/editlisting.png)
+![Book](public/images/book.png)
+![Confirm Book](public/images/confirmbook.png)
+![Razorpay Payment Page](public/images/razorpay.png)
+
 
 ---
 
