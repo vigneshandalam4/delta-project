@@ -1,5 +1,18 @@
 <% layout("/layouts/boilerplate.ejs") %>
 
+<script>
+  const key_id = "<%= key_id  %>";
+  const amount = "<%= orderData.amount %>";
+  const order_id = "<%= orderData.orderId %>";
+  const listing_id = "<%= listing._id %>";
+  const checkIn = "<%= booking.checkIn %>";
+  const checkOut = "<%= booking.checkOut %>";
+  const user_id = "<%= user._id %>";
+  const username = "<%= user.username %>";
+  const email = "<%= user.email %>";
+  const contact = "<%= user.phone %>";
+</script>
+
 <!-- Page Container -->
 <div class="container mt-5">
   <h1 class="text-center mb-4">Confirm Details and Pay</h1>
@@ -24,176 +37,7 @@
 
 <!-- Razorpay Checkout Script -->
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-<script>
-var options = {
-    "key": "<%= key_id  %>", // Enter the Key ID generated from the Dashboard
-    "amount": "<%= orderData.amount %>", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "WanderLust Private Limited", // Your business name
-    "description": "Payment for your WanderLust booking",
-    "image": "https://res.cloudinary.com/dxnqvqj0z/image/upload/v1739366635/w17bhcfqhcb9tvypzqr4.png",
-    "order_id": "<%= orderData.orderId %>", // Order ID
-    "handler": function (response) {
-        // Create a new form to submit the data
-        var form = document.createElement('form');
-        form.method = 'POST';
-        form.action = '/listings/<%= listing._id %>/book/paymentsucess';
-
-        // Add hidden inputs to the form
-        var inputOrderId = document.createElement('input');
-        inputOrderId.type = 'hidden';
-        inputOrderId.name = 'order_id';
-        inputOrderId.value = "<%= orderData.orderId %>";
-
-        var inputPaymentId = document.createElement('input');
-        inputPaymentId.type = 'hidden';
-        inputPaymentId.name = 'payment_id';
-        inputPaymentId.value = response.razorpay_payment_id;
-
-        var inputSignature = document.createElement('input');
-        inputSignature.type = 'hidden';
-        inputSignature.name = 'signature';
-        inputSignature.value = response.razorpay_signature;
-
-        var inputAmount = document.createElement('input');
-        inputAmount.type = 'hidden';
-        inputAmount.name = 'amount';
-        inputAmount.value = "<%= orderData.amount %>";
-
-        var inputCheckIn = document.createElement('input');
-        inputCheckIn.type = 'hidden';
-        inputCheckIn.name = 'checkIn';
-        inputCheckIn.value = "<%= booking.checkIn %>";
-
-        var inputCheckOut = document.createElement('input');
-        inputCheckOut.type = 'hidden';
-        inputCheckOut.name = 'checkOut';
-        inputCheckOut.value = "<%= booking.checkOut %>";
-
-        // Append all inputs to the form
-        form.appendChild(inputOrderId);
-        form.appendChild(inputPaymentId);
-        form.appendChild(inputSignature);
-        form.appendChild(inputAmount);
-        form.appendChild(inputCheckIn);
-        form.appendChild(inputCheckOut);
-
-        // Append the form to the body (it will not be visible)
-        document.body.appendChild(form);
-
-        // Submit the form
-        form.submit();
-    },
-    "prefill": {
-        "name": "<%= user.username %>", // Customer's name
-        "email": "<%= user.email %>", 
-        "contact": "<%= user.phone %>"  // Customer's phone number
-    },
-    "notes": {
-        "address": "WanderLust Private Limited"
-    },
-    "theme": {
-        "color": "#3399cc"
-    }
-};
-
-var rzp1 = new Razorpay(options);
-rzp1.on('payment.failed', function (response) {
-    var form = document.createElement('form');
-    form.method = 'POST';
-    form.action = '/listings/<%= listing._id %>/book/paymentfailure';
-
-    var inputOrderId = document.createElement('input');
-    inputOrderId.type = 'hidden';
-    inputOrderId.name = 'order_id';
-    inputOrderId.value = "<%= orderData.orderId %>";
-
-    var inputPaymentId = document.createElement('input');
-    inputPaymentId.type = 'hidden';
-    inputPaymentId.name = 'payment_id';
-    inputPaymentId.value = response.error.metadata.payment_id;
-
-    var inputAmount = document.createElement('input');
-    inputAmount.type = 'hidden';
-    inputAmount.name = 'amount';
-    inputAmount.value = "<%= orderData.amount %>";
-
-    var inputCheckIn = document.createElement('input');
-    inputCheckIn.type = 'hidden';
-    inputCheckIn.name = 'checkIn';
-    inputCheckIn.value = "<%= booking.checkIn %>";
-
-    var inputCheckOut = document.createElement('input');
-    inputCheckOut.type = 'hidden';
-    inputCheckOut.name = 'checkOut';
-    inputCheckOut.value = "<%= booking.checkOut %>";
-
-    var inputUser = document.createElement('input');
-    inputUser.type = 'hidden';
-    inputUser.name = 'userId';
-    inputUser.value = "<%= user._id %>";
-
-    form.appendChild(inputOrderId);
-    form.appendChild(inputPaymentId);
-    form.appendChild(inputAmount);
-    form.appendChild(inputCheckIn);
-    form.appendChild(inputCheckOut);
-    form.appendChild(inputUser);
-
-    document.body.appendChild(form);
-    form.submit();
-});
-
-document.getElementById('rzp-button1').onclick = function(e) {
-    rzp1.open();
-    e.preventDefault();
-}
-</script>
+<script src="/js/razorpayCheckout.js"></script>
 
 <!-- Additional Styling -->
-<style>
-  .container {
-    max-width: 600px;
-    margin-top: 50px;
-  }
-
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-  }
-
-  .card-body {
-    padding: 20px;
-  }
-
-  .btn-primary {
-    background-color: #007bff;
-    border: none;
-    font-size: 18px;
-    padding: 12px 24px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  .btn-primary:hover {
-    background-color: #0056b3;
-  }
-
-  h1, h5 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  h1 {
-    font-size: 32px;
-  }
-
-  h5 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-
-  .text-center {
-    text-align: center;
-  }
-</style>
+<link rel="stylesheet" href="/css/confirmpayment.css">

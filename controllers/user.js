@@ -53,3 +53,21 @@ module.exports.logout = (req,res,next) => {
         res.redirect("/listings");
     });
 }
+
+//profile route
+module.exports.profile = async (req, res) => {
+    // Find the user by ID and populate the 'bookings' field and 'listing' in each booking
+    const user = await User.findById(req.user._id)
+        .populate({
+            path: 'bookings',
+            populate: {
+                path: 'listing',  // This assumes 'listing' is a reference field in your Booking model
+                model: 'Listing'  // Make sure to replace 'Listing' with the actual model name for listings if different
+            }
+        });
+
+    // console.log(user.bookings); // Log bookings to check the populated data
+
+    // Render the profile page with the user and bookings data
+    res.render('users/profile.ejs', { user });
+}

@@ -37,6 +37,9 @@ router.route("/login")
 //logout route
 router.get("/logout", userController.logout );
 
+// Profile Route
+router.get('/profile', isLoggedIn, wrapAsync( userController.profile ));
+
 //miscellaneous - footer section
 router.get("/privacy",(req,res) => {
     res.render("miscellaneous/privacy.ejs");
@@ -45,25 +48,6 @@ router.get("/privacy",(req,res) => {
 router.get("/terms",(req,res) => {
     res.render("miscellaneous/terms.ejs");
 });
-
-// Profile Route
-router.get('/profile', isLoggedIn, wrapAsync(async(req, res) => {
-    // Find the user by ID and populate the 'bookings' field and 'listing' in each booking
-    const user = await User.findById(req.user._id)
-        .populate({
-            path: 'bookings',
-            populate: {
-                path: 'listing',  // This assumes 'listing' is a reference field in your Booking model
-                model: 'Listing'  // Make sure to replace 'Listing' with the actual model name for listings if different
-            }
-        });
-
-    // console.log(user.bookings); // Log bookings to check the populated data
-
-    // Render the profile page with the user and bookings data
-    res.render('miscellaneous/profile.ejs', { user });
-}));
-
 
 router.get("/refunds",(req,res) => {
     res.render("miscellaneous/refund.ejs");
@@ -79,6 +63,5 @@ router.post("/contact", (req, res) => {
     req.flash("success","Your message has been received. We'll get back to you soon!");
     res.redirect("/listings");
 });
-
 
 module.exports = router;
