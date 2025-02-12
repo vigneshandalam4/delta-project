@@ -135,7 +135,7 @@ module.exports.confirmPaymentAndSaveInDb = async (req, res) => {
 
     } else {
         // Log payment verification failure
-        console.log("Payment verification failed.");
-        res.status(400).json({ message: "Payment verification failed" });
+        req.flash("error", "Payment verification failed");
+        res.redirect("/listings"); // Adjust the redirect URL based on your application structure
     }
 }

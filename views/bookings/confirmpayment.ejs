@@ -99,13 +99,49 @@ var options = {
 
 var rzp1 = new Razorpay(options);
 rzp1.on('payment.failed', function (response) {
-    alert(response.error.code);
-    alert(response.error.description);
-    alert(response.error.source);
-    alert(response.error.step);
-    alert(response.error.reason);
-    alert(response.error.metadata.order_id);
-    alert(response.error.metadata.payment_id);
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/listings/<%= listing._id %>/book/paymentfailure';
+
+    var inputOrderId = document.createElement('input');
+    inputOrderId.type = 'hidden';
+    inputOrderId.name = 'order_id';
+    inputOrderId.value = "<%= orderData.orderId %>";
+
+    var inputPaymentId = document.createElement('input');
+    inputPaymentId.type = 'hidden';
+    inputPaymentId.name = 'payment_id';
+    inputPaymentId.value = response.error.metadata.payment_id;
+
+    var inputAmount = document.createElement('input');
+    inputAmount.type = 'hidden';
+    inputAmount.name = 'amount';
+    inputAmount.value = "<%= orderData.amount %>";
+
+    var inputCheckIn = document.createElement('input');
+    inputCheckIn.type = 'hidden';
+    inputCheckIn.name = 'checkIn';
+    inputCheckIn.value = "<%= booking.checkIn %>";
+
+    var inputCheckOut = document.createElement('input');
+    inputCheckOut.type = 'hidden';
+    inputCheckOut.name = 'checkOut';
+    inputCheckOut.value = "<%= booking.checkOut %>";
+
+    var inputUser = document.createElement('input');
+    inputUser.type = 'hidden';
+    inputUser.name = 'userId';
+    inputUser.value = "<%= user._id %>";
+
+    form.appendChild(inputOrderId);
+    form.appendChild(inputPaymentId);
+    form.appendChild(inputAmount);
+    form.appendChild(inputCheckIn);
+    form.appendChild(inputCheckOut);
+    form.appendChild(inputUser);
+
+    document.body.appendChild(form);
+    form.submit();
 });
 
 document.getElementById('rzp-button1').onclick = function(e) {
