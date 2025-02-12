@@ -8,6 +8,8 @@
 
 Wanderlust is a **full-stack travel platform** designed to help users **explore, share, and book** destinations worldwide. Built using the **MEN stack (MongoDB, Express.js, Node.js)**, Wanderlust offers an immersive experience for adventurers looking to discover new places and make bookings seamlessly.
 
+![Home](public/images/home.png)
+
 ---
 
 ## ✨ Features
@@ -24,6 +26,10 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 - ⏳ **Real-Time Availability**: Users **cannot book** dates that are already reserved.
 - ❌ **Past Date Restriction**: Users **cannot** book for past dates.
 - 🗄 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
+
+![Login](public/images/login.png)
+![Signup](public/images/signup.png)
+![Profile](public/images/profile1.png)
 
 ### 🚀 Future Enhancements
 - ❌ **Booking Cancellation**: Users will be able to **cancel** their bookings.
@@ -42,6 +48,9 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 | **File Storage** | Cloudinary |
 | **Mapping Service** | Mapbox API |
 | **Payment Gateway** | Razorpay |
+
+![Listing View](public/images/viewlisting1.png)
+![Listing Review](public/images/viewlisting2-reviews.png)
 
 ---
 
@@ -63,6 +72,7 @@ npm install
 
 # Start the server
 node index.js
+
 ```
 
 ---

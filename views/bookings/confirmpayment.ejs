@@ -37,7 +37,7 @@ var options = {
         // Create a new form to submit the data
         var form = document.createElement('form');
         form.method = 'POST';
-        form.action = '/listings/<%= listing._id %>/book/confirm';
+        form.action = '/listings/<%= listing._id %>/book/paymentsucess';
 
         // Add hidden inputs to the form
         var inputOrderId = document.createElement('input');

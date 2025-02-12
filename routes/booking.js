@@ -24,7 +24,7 @@ router.get("/listings/:id/book",wrapAsync( bookingController.renderBookingForm )
 router.post("/listings/:id/book", wrapAsync( bookingController.sendOrderAndRenderConfirmpage ));
 
 //confirm payment and save all details in booking, listing, and user
-router.post("/listings/:id/book/confirm", wrapAsync( bookingController.confirmPaymentAndSaveInDb ));
+router.post("/listings/:id/book/paymentsucess", wrapAsync( bookingController.confirmPaymentAndSaveInDb ));
 
 
 module.exports = router;
