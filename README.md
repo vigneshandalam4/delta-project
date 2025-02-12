@@ -8,8 +8,6 @@
 
 Wanderlust is a **full-stack travel platform** designed to help users **explore, share, and book** destinations worldwide. Built using the **MEN stack (MongoDB, Express.js, Node.js)**, Wanderlust offers an immersive experience for adventurers looking to discover new places and make bookings seamlessly.
 
-![Home](public/images/home.png)
-
 ---
 
 ## ✨ Features
@@ -27,15 +25,56 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 - ❌ **Past Date Restriction**: Users **cannot** book for past dates.
 - 🗄 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
 
-![Login](public/images/login.png)
-![Signup](public/images/signup.png)
-![Profile 1](public/images/profile1.png)
-![Profile 2](public/images/profile2.png)
-
 ### 🚀 Future Enhancements
 - ❌ **Booking Cancellation**: Users will be able to **cancel** their bookings.
 - 📊 **Admin Dashboard**: Advanced **analytics and management** for listings & bookings.
 - 🛎 **Host Mode**: Allow users to act as **hosts** for their own listings.
+
+---
+
+## 🖼 Screenshots
+
+### 🏠 Home Page
+![Home](public/images/home.png)
+
+### 🔐 Authentication Pages
+#### Login Page
+![Login](public/images/login.png)
+
+#### Signup Page
+![Signup](public/images/signup.png)
+
+### 👤 User Profile
+#### Profile Overview
+![Profile 1](public/images/profile1.png)
+![Profile 2](public/images/profile2.png)
+
+### 📍 Listing Views
+#### Listing Overview
+![Listing View 1](public/images/viewlisting1.png)
+
+#### Reviews Section
+![Listing View 2 - Reviews](public/images/viewlisting2-reviews.png)
+
+#### Map Integration
+![Listing View 3 - Map](public/images/viewlisting3-map.png)
+
+### 🏕 Creating & Editing Listings
+#### Create a New Listing
+![Create New Listing](public/images/createnewlisting.png)
+
+#### Edit a Listing
+![Edit Listing](public/images/editlisting.png)
+
+### 🏨 Booking & Payment
+#### Booking Page
+![Book](public/images/book.png)
+
+#### Booking Confirmation
+![Confirm Book](public/images/confirmbook.png)
+
+#### Razorpay Payment Gateway
+![Razorpay Payment Page](public/images/razorpay.png)
 
 ---
 
@@ -49,17 +88,6 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 | **File Storage** | Cloudinary |
 | **Mapping Service** | Mapbox API |
 | **Payment Gateway** | Razorpay |
-
-![Listing View 1](public/images/viewlisting1.png)
-![Listing View 2 - Reviews](public/images/viewlisting2-reviews.png)
-![Listing View 3 - Map](public/images/viewlisting3-map.png)
-
-![Create New Listing](public/images/createnewlisting.png)
-![Edit Listing](public/images/editlisting.png)
-![Book](public/images/book.png)
-![Confirm Book](public/images/confirmbook.png)
-![Razorpay Payment Page](public/images/razorpay.png)
-
 
 ---
 
@@ -81,7 +109,6 @@ npm install
 
 # Start the server
 node index.js
-
 ```
 
 ---
@@ -127,6 +154,7 @@ This project is licensed under the **MIT License**.
 ---
 
 ## 📩 Contact
+
 For any inquiries, feel free to reach out via **GitHub** or email.
 
 ---
