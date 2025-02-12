@@ -40,28 +40,4 @@ router.get("/logout", userController.logout );
 // Profile Route
 router.get('/profile', isLoggedIn, wrapAsync( userController.profile ));
 
-//miscellaneous - footer section
-router.get("/privacy",(req,res) => {
-    res.render("miscellaneous/privacy.ejs");
-});
-
-router.get("/terms",(req,res) => {
-    res.render("miscellaneous/terms.ejs");
-});
-
-router.get("/refunds",(req,res) => {
-    res.render("miscellaneous/refund.ejs");
-});
-
-router.get("/contactus",(req,res) => {
-    res.render("miscellaneous/contact.ejs");
-});
-
-router.post("/contact", (req, res) => {
-    const { name, email, message } = req.body;
-    console.log(`New Contact Request:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    req.flash("success","Your message has been received. We'll get back to you soon!");
-    res.redirect("/listings");
-});
-
 module.exports = router;

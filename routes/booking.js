@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router();
+const router = express.Router({mergeParams : true});
 const Booking = require("../models/booking.js");
 const Listing = require("../models/listing.js");
 const Razorpay = require("razorpay");
@@ -17,17 +17,22 @@ const razorpay = new Razorpay({
     key_secret: process.env.RAZORPAY_KEY_SECRET,
 });
 
-//render booking.ejs
-router.get("/listings/:id/book",wrapAsync( bookingController.renderBookingForm ));
+//render booking.ejs and send order from your server calculate prices and render confirmpayment.ejs
+router.route("/")
+    .get( wrapAsync( bookingController.renderBookingForm ))
+    .post( wrapAsync( bookingController.sendOrderAndRenderConfirmpage ));
 
-//send order from your server calculate prices and render confirmpayment.ejs
-router.post("/listings/:id/book", wrapAsync( bookingController.sendOrderAndRenderConfirmpage ));
+// //render booking.ejs
+// router.get("/",wrapAsync( bookingController.renderBookingForm ));
+
+// //send order from your server calculate prices and render confirmpayment.ejs
+// router.post("/", wrapAsync( bookingController.sendOrderAndRenderConfirmpage ));
 
 //confirm payment and save all details in booking, listing, and user
-router.post("/listings/:id/book/paymentsucess", wrapAsync( bookingController.confirmPaymentAndSaveInDb ));
+router.post("/paymentsuccess", wrapAsync( bookingController.confirmPaymentAndSaveInDb ));
 
 //on paymentfailure
-router.post('/listings/:id/book/paymentfailure', wrapAsync( bookingController.paymenFailuretAndSaveInDb ));
+router.post('/paymentfailure', wrapAsync( bookingController.paymenFailuretAndSaveInDb ));
 
 
 module.exports = router;

@@ -34,7 +34,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-
 //listings route
 const listingRouter = require("./routes/listing.js");
 //reviews route
@@ -43,6 +42,8 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 //Booking route
 const bookingRouter = require("./routes/booking.js");
+//footer route
+const footerRouter = require("./routes/footerRoutes.js");
 
 // Set EJS as the view engine for rendering templates
 app.set('view engine', 'ejs');
@@ -161,7 +162,9 @@ app.use("/listings/:id/reviews",reviewRouter);
 //User, seperate route
 app.use("/",userRouter);
 //Bookings, seperate route
-app.use("/",bookingRouter);
+app.use("/listings/:id/book",bookingRouter);
+//footer, seperate route
+app.use("/",footerRouter);
 
 //error handling
 //if client goes on any route which is not there in our domain ,404 page not found

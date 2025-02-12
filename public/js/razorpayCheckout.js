@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "handler": function (response) {
             const form = document.createElement('form');
             form.method = 'POST';
-            form.action = `/listings/${listing_id}/book/paymentsucess`;
+            form.action = `/listings/${listing_id}/book/paymentsuccess`;
 
             // Adding inputs
             form.appendChild(createHiddenInput('order_id', order_id));
