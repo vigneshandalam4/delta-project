@@ -23,6 +23,7 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 - 💳 **Secure Payments**: Integrated **Razorpay** for **hassle-free transactions**.
 - ⏳ **Real-Time Availability**: Users **cannot book** dates that are already reserved.
 - ❌ **Past Date Restriction**: Users **cannot** book for past dates.
+- 🗄 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
 
 ### 🚀 Future Enhancements
 - ❌ **Booking Cancellation**: Users will be able to **cancel** their bookings.
@@ -34,7 +35,7 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 ## 🛠 Tech Stack
 
 | Technology   | Usage        |
-|--------------|--------------|
+|-------------|-------------|
 | **Backend** | Node.js, Express.js, MongoDB |
 | **Frontend** | EJS, Bootstrap |
 | **Authentication** | Passport.js |
@@ -62,3 +63,54 @@ npm install
 
 # Start the server
 node index.js
+```
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root directory and add the following variables:
+
+```env
+CLOUD_NAME=<your_cloudinary_cloud_name>
+CLOUD_API_KEY=<your_cloudinary_api_key>
+CLOUD_API_SECRET=<your_cloudinary_api_secret>
+MAP_TOKEN=<your_mapbox_access_token>
+ATLASDB_URL=<your_MongoAtlas_DB_connection_string>
+SECRET=<anything>
+RAZORPAY_KEY_ID=<your_Razorpay_public_key>
+RAZORPAY_KEY_SECRET=<your_Razorpay_secret_key>
+```
+
+---
+
+## 🎯 Usage
+
+1️⃣ **Sign up** or **log in** to your account.
+2️⃣ **Browse listings** of various travel destinations.
+3️⃣ **Add new listings** with images, descriptions, and locations.
+4️⃣ **Book stays** at your favorite destinations and **make secure payments via Razorpay**.
+5️⃣ **View past bookings** from your profile.
+6️⃣ **Leave reviews** and ratings for destinations.
+
+---
+
+## 🤝 Contributing
+
+🚀 Contributions are welcome! Feel free to open issues and pull requests to **improve the project**.
+
+---
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 📩 Contact
+For any inquiries, feel free to reach out via **GitHub** or email.
+
+---
+
+🚀 **Start Exploring with Wanderlust Today!** 🌍
+
