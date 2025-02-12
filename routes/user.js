@@ -58,7 +58,7 @@ router.get('/profile', isLoggedIn, wrapAsync(async(req, res) => {
             }
         });
 
-    console.log(user.bookings); // Log bookings to check the populated data
+    // console.log(user.bookings); // Log bookings to check the populated data
 
     // Render the profile page with the user and bookings data
     res.render('miscellaneous/profile.ejs', { user });

@@ -39,7 +39,10 @@ module.exports.sendOrderAndRenderConfirmpage = async (req, res) => {
     //calculate price per night
     const pricePerNight = listing.price;
     const nights = checkOutDate.diff(checkInDate, 'days');
-    const amount = nights * pricePerNight;//amount
+    // Calculate amount with GST and convert to paise
+    //amount
+    let amount = nights * pricePerNight; 
+    amount = Math.round(amount * 1.18 * 100); // Apply 18% GST and convert to paise
     // console.log(`Total price for ${nights} nights: ₹${amount}`);
 
     //send order from your server and get order id
