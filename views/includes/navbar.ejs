@@ -29,6 +29,9 @@
           <% } %>
           <% if(currUser){ %>
             <a class="nav-link" href="/profile">Profile</a>
+            <% if (currUser._id.toString() === "67abab58cd7917ebafaa9e0d") { %>
+              <a class="nav-link" href="/dashboard"><b>Dashboard</b></a>
+            <% } %>
             <a class="nav-link" href="/logout"><b>Log out</b></a>
           <% } %>
         </div>

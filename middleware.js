@@ -77,3 +77,15 @@ module.exports.isreviewAuthor = async (req,res,next) => {
     }
     next();
 }
+
+//Admin check route
+module.exports.isAdmin = (req, res, next) => {
+    const adminId = "67abab58cd7917ebafaa9e0d"; // Your admin's MongoDB _id
+
+    if (!req.user || req.user._id.toString() !== adminId) {
+        req.flash("error","Access Denied!");
+        return res.redirect(`/listings`);
+    }
+
+    next(); // Proceed if admin
+};
