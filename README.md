@@ -70,14 +70,14 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 #### Booking Confirmation
 ![Confirm Book](public/images/confirmbook.png)
 
-#### Razorpay Payment Gateway
-![Razorpay Payment Page](public/images/razorpay.png)
+#### 💳 Razorpay Payment Gateway  
+![Razorpay Payment Page](public/images/razorpay.png)  
 
-#### Admin Dashboard
-![Admin Dashboard Page](public/images/admin_dashboard.png)
+#### 📊 Admin Dashboard  
+![Admin Dashboard Page](public/images/admin_dashboard.png)  
 
-#### Contact Us - Brevo(Mailer)
-![Contact Us Page](public/images/mailer_brevo.png)
+#### 📩 Contact Us - Brevo (Mailer)  
+![Contact Us Page](public/images/mailer_brevo.png)  
 
 ---
 
