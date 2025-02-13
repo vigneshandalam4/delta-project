@@ -14,7 +14,7 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 
 ### ✅ Core Features
 - 🔑 **User Authentication**: Secure login and registration using **Passport.js**.
-- 🏕 **Listings Management**: Users can **create, edit, and delete** travel listings.
+- 🏥 **Listings Management**: Users can **create, edit, and delete** travel listings.
 - ⭐ **Reviews & Ratings**: Leave **detailed reviews and ratings** for various locations.
 - ☁️ **Cloud Storage**: **Image uploads** are handled via **Cloudinary**.
 - 🗺 **Map Integration**: Interactive maps powered by **Mapbox API**.
@@ -23,12 +23,11 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 - 💳 **Secure Payments**: Integrated **Razorpay** for **hassle-free transactions**.
 - ⏳ **Real-Time Availability**: Users **cannot book** dates that are already reserved.
 - ❌ **Past Date Restriction**: Users **cannot** book for past dates.
-- 🗄 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
+- 📺 **Mailer Service**: Integrated **Brevo** for sending emails, including booking confirmations and user notifications.
+- 💾 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
 
 ### 🚀 Future Enhancements
-- ❌ **Booking Cancellation**: Users will be able to **cancel** their bookings.
 - 📊 **Admin Dashboard**: Advanced **analytics and management** for listings & bookings.
-- 🛎 **Host Mode**: Allow users to act as **hosts** for their own listings.
 
 ---
 
@@ -59,7 +58,7 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 #### Map Integration
 ![Listing View 3 - Map](public/images/viewlisting3-map.png)
 
-### 🏕 Creating & Editing Listings
+### 🏥 Creating & Editing Listings
 #### Create a New Listing
 ![Create New Listing](public/images/createnewlisting.png)
 
@@ -88,10 +87,11 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 | **File Storage** | Cloudinary |
 | **Mapping Service** | Mapbox API |
 | **Payment Gateway** | Razorpay |
+| **Mailer Service** | Brevo |
 
 ---
 
-## 🏗 Installation
+## 🏷️ Installation
 
 To run the project locally, follow these steps:
 
@@ -126,18 +126,20 @@ ATLASDB_URL=<your_MongoAtlas_DB_connection_string>
 SECRET=<anything>
 RAZORPAY_KEY_ID=<your_Razorpay_public_key>
 RAZORPAY_KEY_SECRET=<your_Razorpay_secret_key>
+BREVO_API_KEY=<your_Brevo_api_key>
 ```
 
 ---
 
 ## 🎯 Usage
 
-1️⃣ **Sign up** or **log in** to your account.
-2️⃣ **Browse listings** of various travel destinations.
-3️⃣ **Add new listings** with images, descriptions, and locations.
-4️⃣ **Book stays** at your favorite destinations and **make secure payments via Razorpay**.
-5️⃣ **View past bookings** from your profile.
-6️⃣ **Leave reviews** and ratings for destinations.
+1⃣ **Sign up** or **log in** to your account.
+2⃣ **Browse listings** of various travel destinations.
+3⃣ **Add new listings** with images, descriptions, and locations.
+4⃣ **Book stays** at your favorite destinations and **make secure payments via Razorpay**.
+5⃣ **View past bookings** from your profile.
+6⃣ **Leave reviews** and ratings for destinations.
+7⃣ **Receive email notifications** for bookings and other updates via **Brevo**.
 
 ---
 
@@ -147,7 +149,7 @@ RAZORPAY_KEY_SECRET=<your_Razorpay_secret_key>
 
 ---
 
-## 📜 License
+## 🐟 License
 
 This project is licensed under the **MIT License**.
 
@@ -160,4 +162,3 @@ For any inquiries, feel free to reach out via **GitHub** or email.
 ---
 
 🚀 **Start Exploring with Wanderlust Today!** 🌍
-
