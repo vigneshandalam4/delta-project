@@ -71,7 +71,7 @@
                 <td><%= booking.listing ? booking.listing.title : "Unknown" %></td>
                 <td><%= booking.checkIn %></td>
                 <td><%= booking.checkOut %></td>
-                <td>₹<%= booking.amount %></td>
+                <td>₹<%= booking.amount / 100 %></td>
                 <td 
                     style="color: <%= booking.paymentStatus === 'Success' ? 'green' : booking.paymentStatus === 'Pending' ? 'orange' : 'red' %>;">
                     <%= booking.paymentStatus %>
