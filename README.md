@@ -25,8 +25,6 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 - ❌ **Past Date Restriction**: Users **cannot** book for past dates.
 - 📺 **Mailer Service**: Integrated **Brevo** for sending emails, including booking confirmations and user notifications.
 - 💾 **Data Storage**: All data is securely stored using **MongoDB Atlas** for scalable and managed cloud databases.
-
-### 🚀 Future Enhancements
 - 📊 **Admin Dashboard**: Advanced **analytics and management** for listings & bookings.
 
 ---
@@ -74,6 +72,12 @@ Wanderlust is a **full-stack travel platform** designed to help users **explore,
 
 #### Razorpay Payment Gateway
 ![Razorpay Payment Page](public/images/razorpay.png)
+
+#### Admin Dashboard
+![Admin Dashboard Page](public/images/admin_dashboard.png)
+
+#### Contact Us - Brevo(Mailer)
+![Contact Us Page](public/images/mailer_brevo.png)
 
 ---
 
