@@ -1,29 +1,42 @@
+// routes/contact.js
 const express = require("express");
 const router = express.Router();
+const { sendContactEmail } = require('../utils/mailer');
+const wrapAsync = require("../utils/wrapAsync.js");
 
-//footerRoutes - footerRoutes section
-router.get("/privacy",(req,res) => {
+// Footer Routes
+router.get("/privacy", (req, res) => {
     res.render("footerRoutes/privacy.ejs");
 });
 
-router.get("/terms",(req,res) => {
+router.get("/terms", (req, res) => {
     res.render("footerRoutes/terms.ejs");
 });
 
-router.get("/refunds",(req,res) => {
+router.get("/refunds", (req, res) => {
     res.render("footerRoutes/refund.ejs");
 });
 
-router.get("/contactus",(req,res) => {
+router.get("/contactus", (req, res) => {
     res.render("footerRoutes/contact.ejs");
 });
 
-router.post("/contact", (req, res) => {
-    const { name, email, message } = req.body;
-    console.log(`New Contact Request:\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
-    req.flash("success","Your message has been received. We'll get back to you soon!");
-    res.redirect("/listings");
-});
+// Route to handle form submission
+router.post('/contact', wrapAsync(async (req, res) => {
+    const { name, email, message, phone, subject } = req.body;
 
+    // Validate the input
+    if (!name || !email || !message) {
+        req.flash("error", "All Fields are required!");
+        return res.redirect("/contactus");
+    }
+
+    // Send the email
+    await sendContactEmail(email, name, message, phone, subject);
+
+    // Send success response
+    req.flash("success", "Your message has been received. We'll get back to you soon!");
+    res.redirect("/listings");
+}));
 
 module.exports = router;
