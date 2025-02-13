@@ -32,11 +32,18 @@ router.post('/contact', wrapAsync(async (req, res) => {
     }
 
     // Send the email
-    await sendContactEmail(email, name, message, phone, subject);
+    let response = await sendContactEmail(email, name, message, phone, subject);
 
-    // Send success response
-    req.flash("success", "Your message has been received. We'll get back to you soon!");
-    res.redirect("/listings");
+    if(response){
+        // Send success response
+        req.flash("success", "Your message has been received. We'll get back to you soon!");
+        res.redirect("/listings");
+    }else{
+        req.flash("error", "Error! Your message wasn't sent!");
+        res.redirect("/listings");
+    }
+
+    
 }));
 
 module.exports = router;

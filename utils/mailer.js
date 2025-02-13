@@ -22,8 +22,11 @@ const sendContactEmail = async (senderEmail, senderName, message, phone, subject
     try {
         const response = await emailApi.sendTransacEmail(sendSmtpEmail);
         console.log('Email sent successfully!', response);
+        return true;
     } catch (error) {
-        console.error('Error sending email:', error);
+        // console.error('Error sending email:', error);
+        console.error('Error sending email');
+        return false;
     }
 };
 
